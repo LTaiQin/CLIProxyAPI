@@ -55,46 +55,11 @@ routing:
 # When true, enable authentication for the WebSocket API (/v1/ws).
 ws-auth: false
 codex-api-key:
-  - api-key: sk-d8cab97852994409ada3865247349ef5
-    base-url: https://www.right.codes/codex/v1
+  - api-key: sk-test
+    base-url: https://www.test/v1
     proxy-url: ""
     models: []
-    prefix: right
-  - api-key: sk-ant-oat01-iXwZZjcSGJSXlValbiVzs8PtqhSqBgOe64UaZeOdVhMzH4wTBiXC9q-utKOiWnJwzU1cYv6cKuUmgi-uVRLeQvAkUe9mVAA
-    base-url: https://code.newcli.com/codex/v1
-    proxy-url: ""
-    models: []
-    prefix: fox
-  - api-key: sk-5BW6KCAxvbcaFgONyWIMpKzMrc4IWkmvmKurIT5XpjferlaI
-    base-url: https://wzw.pp.ua/v1
-    proxy-url: ""
-    models: []
-    prefix: wong
-  - api-key: sk-uvnAqCllnzIHbpLi1gGu4XFxjA3AdIWH1x8IUgsUJZrG6pCW
-    base-url: https://kfc-api.sxxe.net/v1
-    proxy-url: ""
-    models: []
-    prefix: kfc
-  - api-key: sk-95f0f74706071352f82474c68b069184a76da09deafdff64b0ccb4da3dd8f686
-    prefix: ggboom
-    base-url: https://ai.qaq.al
-    proxy-url: ""
-    models: []
-  - api-key: sk-464ydujIXLb8tRWPFKusKZsXSa99aEyWpcvAf8hBiHZ04w5k
-    prefix: tt
-    base-url: https://openai.api-test.us.ci
-    proxy-url: ""
-    models: []
-  - api-key: sk-HYq4m60n4Wwp5s5mPPZGdWTdWap8MJxHGE5xo6vTmygTDPmc
-    prefix: einzieg
-    base-url: https://api.einzieg.site
-    proxy-url: ""
-    models: []
-  - api-key: sk-NKBV5GvgrP9qEj7jZ91Xbfpp5TA1kQmx3RSNgQskvqiERkWb
-    prefix: aini
-    base-url: https://x.ainiaini.xyz
-    proxy-url: ""
-    models: []
+    prefix: test
 
 # Streaming behavior (SSE keep-alives + safe bootstrap retries).
 # streaming:
