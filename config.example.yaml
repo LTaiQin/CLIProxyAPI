@@ -1,97 +1,100 @@
 # Server host/interface to bind to. Default is empty ("") to bind all interfaces (IPv4 + IPv6).
 # Use "127.0.0.1" or "localhost" to restrict access to local machine only.
 host: ""
-
 # Server port
 port: 8317
-
 # TLS settings for HTTPS. When enabled, the server listens with the provided certificate and key.
 tls:
   enable: false
   cert: ""
   key: ""
-
 # Management API settings
 remote-management:
-  # Whether to allow remote (non-localhost) management access.
-  # When false, only localhost can access management endpoints (a key is still required).
-  allow-remote: false
-
-  # Management key. If a plaintext value is provided here, it will be hashed on startup.
-  # All management requests (even from localhost) require this key.
-  # Leave empty to disable the Management API entirely (404 for all /v0/management routes).
-  secret-key: ""
-
-  # Disable the bundled management control panel asset download and HTTP route when true.
+# Whether to allow remote (non-localhost) management access.
+# When false, only localhost can access management endpoints (a key is still required).
+  allow-remote: true
+# Management key. If a plaintext value is provided here, it will be hashed on startup.
+# All management requests (even from localhost) require this key.
+# Leave empty to disable the Management API entirely (404 for all /v0/management routes).
+  secret-key: "$2a$10$.COcI4wXY4v5inj/lGWzl.AB6ytZY5C99P92Ynw5gUDWaDWgH2o4."
+# Disable the bundled management control panel asset download and HTTP route when true.
   disable-control-panel: false
-
-  # GitHub repository for the management control panel. Accepts a repository URL or releases API URL.
+# GitHub repository for the management control panel. Accepts a repository URL or releases API URL.
   panel-github-repository: "https://github.com/router-for-me/Cli-Proxy-API-Management-Center"
-
 # Authentication directory (supports ~ for home directory)
-auth-dir: "~/.cli-proxy-api"
-
+auth-dir: "/root/.cli-proxy-api"
 # API keys for authentication
 api-keys:
-  - "your-api-key-1"
-  - "your-api-key-2"
-  - "your-api-key-3"
-
+  - jciodshfoiawdhoiajsafasda
 # Enable debug logging
 debug: false
-
-# Enable pprof HTTP debug server (host:port). Keep it bound to localhost for safety.
-pprof:
-  enable: false
-  addr: "127.0.0.1:8316"
-
 # When true, disable high-overhead HTTP middleware features to reduce per-request memory usage under high concurrency.
 commercial-mode: false
-
 # When true, write application logs to rotating files instead of stdout
 logging-to-file: false
-
 # Maximum total size (MB) of log files under the logs directory. When exceeded, the oldest log
 # files are deleted until within the limit. Set to 0 to disable.
 logs-max-total-size-mb: 0
-
-# Maximum number of error log files retained when request logging is disabled.
-# When exceeded, the oldest error log files are deleted. Default is 10. Set to 0 to disable cleanup.
-error-logs-max-files: 10
-
 # When false, disable in-memory usage statistics aggregation
-usage-statistics-enabled: false
-
+usage-statistics-enabled: true
 # Proxy URL. Supports socks5/http/https protocols. Example: socks5://user:pass@192.168.1.1:1080/
-proxy-url: ""
-
+proxy-url: "socks://127.0.0.1:7890"
 # When true, unprefixed model requests only use credentials without a prefix (except when prefix == model name).
 force-model-prefix: false
-
-# When true, forward filtered upstream response headers to downstream clients.
-# Default is false (disabled).
-passthrough-headers: false
-
 # Number of times to retry a request. Retries will occur if the HTTP response code is 403, 408, 500, 502, 503, or 504.
 request-retry: 3
-
 # Maximum wait time in seconds for a cooled-down credential before triggering a retry.
 max-retry-interval: 30
-
 # Quota exceeded behavior
 quota-exceeded:
   switch-project: true # Whether to automatically switch to another project when a quota is exceeded
   switch-preview-model: true # Whether to automatically switch to a preview model when a quota is exceeded
-
 # Routing strategy for selecting credentials when multiple match.
 routing:
   strategy: "round-robin" # round-robin (default), fill-first
-
 # When true, enable authentication for the WebSocket API (/v1/ws).
 ws-auth: false
-
-# When > 0, emit blank lines every N seconds for non-streaming responses to prevent idle timeouts.
-nonstream-keepalive-interval: 0
+codex-api-key:
+  - api-key: sk-d8cab97852994409ada3865247349ef5
+    base-url: https://www.right.codes/codex/v1
+    proxy-url: ""
+    models: []
+    prefix: right
+  - api-key: sk-ant-oat01-iXwZZjcSGJSXlValbiVzs8PtqhSqBgOe64UaZeOdVhMzH4wTBiXC9q-utKOiWnJwzU1cYv6cKuUmgi-uVRLeQvAkUe9mVAA
+    base-url: https://code.newcli.com/codex/v1
+    proxy-url: ""
+    models: []
+    prefix: fox
+  - api-key: sk-5BW6KCAxvbcaFgONyWIMpKzMrc4IWkmvmKurIT5XpjferlaI
+    base-url: https://wzw.pp.ua/v1
+    proxy-url: ""
+    models: []
+    prefix: wong
+  - api-key: sk-uvnAqCllnzIHbpLi1gGu4XFxjA3AdIWH1x8IUgsUJZrG6pCW
+    base-url: https://kfc-api.sxxe.net/v1
+    proxy-url: ""
+    models: []
+    prefix: kfc
+  - api-key: sk-95f0f74706071352f82474c68b069184a76da09deafdff64b0ccb4da3dd8f686
+    prefix: ggboom
+    base-url: https://ai.qaq.al
+    proxy-url: ""
+    models: []
+  - api-key: sk-464ydujIXLb8tRWPFKusKZsXSa99aEyWpcvAf8hBiHZ04w5k
+    prefix: tt
+    base-url: https://openai.api-test.us.ci
+    proxy-url: ""
+    models: []
+  - api-key: sk-HYq4m60n4Wwp5s5mPPZGdWTdWap8MJxHGE5xo6vTmygTDPmc
+    prefix: einzieg
+    base-url: https://api.einzieg.site
+    proxy-url: ""
+    models: []
+  - api-key: sk-NKBV5GvgrP9qEj7jZ91Xbfpp5TA1kQmx3RSNgQskvqiERkWb
+    prefix: aini
+    base-url: https://x.ainiaini.xyz
+    proxy-url: ""
+    models: []
 
 # Streaming behavior (SSE keep-alives + safe bootstrap retries).
 # streaming:
@@ -150,24 +153,6 @@ nonstream-keepalive-interval: 0
 #       - "claude-3-*"               # wildcard matching prefix (e.g. claude-3-7-sonnet-20250219)
 #       - "*-thinking"               # wildcard matching suffix (e.g. claude-opus-4-5-thinking)
 #       - "*haiku*"                  # wildcard matching substring (e.g. claude-3-5-haiku-20241022)
-#     cloak:                         # optional: request cloaking for non-Claude-Code clients
-#       mode: "auto"                 # "auto" (default): cloak only when client is not Claude Code
-#                                    # "always": always apply cloaking
-#                                    # "never": never apply cloaking
-#       strict-mode: false           # false (default): prepend Claude Code prompt to user system messages
-#                                    # true: strip all user system messages, keep only Claude Code prompt
-#       sensitive-words:             # optional: words to obfuscate with zero-width characters
-#         - "API"
-#         - "proxy"
-#       cache-user-id: true          # optional: default is false; set true to reuse cached user_id per API key instead of generating a random one each request
-
-# Default headers for Claude API requests. Update when Claude Code releases new versions.
-# These are used as fallbacks when the client does not send its own headers.
-# claude-header-defaults:
-#   user-agent: "claude-cli/2.1.44 (external, sdk-cli)"
-#   package-version: "0.74.0"
-#   runtime-version: "v24.3.0"
-#   timeout: "600"
 
 # OpenAI compatibility providers
 # openai-compatibility:
@@ -211,8 +196,8 @@ nonstream-keepalive-interval: 0
 #   upstream-api-keys:
 #     - upstream-api-key: "amp_key_for_team_a"    # Upstream key to use for these clients
 #       api-keys:                                 # Client keys that use this upstream key
-#         - "your-api-key-1"
-#         - "your-api-key-2"
+#         - "sk-dHKXnUgsgHzZKWAZGcsuWNTc43jN7bfNaoqRAYWCTV8Io"
+#         - "sk-PmvPUOkP4TbzyuX7dP84TQtTlyOJd8jH4ZMQ30Kj1E5VD"
 #     - upstream-api-key: "amp_key_for_team_b"
 #       api-keys:
 #         - "your-api-key-3"
@@ -232,16 +217,14 @@ nonstream-keepalive-interval: 0
 #     - from: "claude-haiku-4-5-20251001"
 #       to: "gemini-2.5-flash"
 
-# Global OAuth model name aliases (per channel)
-# These aliases rename model IDs for both model listing and request routing.
-# Supported channels: gemini-cli, vertex, aistudio, antigravity, claude, codex, qwen, iflow, kimi.
-# NOTE: Aliases do not apply to gemini-api-key, codex-api-key, claude-api-key, openai-compatibility, vertex-api-key, or ampcode.
-# You can repeat the same name with different aliases to expose multiple client model names.
-# oauth-model-alias:
+# Global OAuth model name mappings (per channel)
+# These mappings rename model IDs for both model listing and request routing.
+# Supported channels: gemini-cli, vertex, aistudio, antigravity, claude, codex, qwen, iflow.
+# NOTE: Mappings do not apply to gemini-api-key, codex-api-key, claude-api-key, openai-compatibility, vertex-api-key, or ampcode.
+# oauth-model-mappings:
 #   gemini-cli:
 #     - name: "gemini-2.5-pro"          # original model name under this channel
 #       alias: "g2.5p"                  # client-visible alias
-#       fork: true                      # when true, keep original and also add the alias as an extra model (default: false)
 #   vertex:
 #     - name: "gemini-2.5-pro"
 #       alias: "g2.5p"
@@ -249,8 +232,8 @@ nonstream-keepalive-interval: 0
 #     - name: "gemini-2.5-pro"
 #       alias: "g2.5p"
 #   antigravity:
-#     - name: "gemini-3-pro-high"
-#       alias: "gemini-3-pro-preview"
+#     - name: "gemini-3-pro-preview"
+#       alias: "g3p"
 #   claude:
 #     - name: "claude-sonnet-4-5-20250929"
 #       alias: "cs4.5"
@@ -263,9 +246,6 @@ nonstream-keepalive-interval: 0
 #   iflow:
 #     - name: "glm-4.7"
 #       alias: "glm-god"
-#   kimi:
-#     - name: "kimi-k2.5"
-#       alias: "k2.5"
 
 # OAuth provider excluded models
 # oauth-excluded-models:
@@ -288,39 +268,18 @@ nonstream-keepalive-interval: 0
 #     - "vision-model"
 #   iflow:
 #     - "tstars2.0"
-#   kimi:
-#     - "kimi-k2-thinking"
 
 # Optional payload configuration
 # payload:
 #   default: # Default rules only set parameters when they are missing in the payload.
 #     - models:
 #         - name: "gemini-2.5-pro" # Supports wildcards (e.g., "gemini-*")
-#           protocol: "gemini" # restricts the rule to a specific protocol, options: openai, gemini, claude, codex, antigravity
+#           protocol: "gemini" # restricts the rule to a specific protocol, options: openai, gemini, claude, codex
 #       params: # JSON path (gjson/sjson syntax) -> value
 #         "generationConfig.thinkingConfig.thinkingBudget": 32768
-#   default-raw: # Default raw rules set parameters using raw JSON when missing (must be valid JSON).
-#     - models:
-#         - name: "gemini-2.5-pro" # Supports wildcards (e.g., "gemini-*")
-#           protocol: "gemini" # restricts the rule to a specific protocol, options: openai, gemini, claude, codex, antigravity
-#       params: # JSON path (gjson/sjson syntax) -> raw JSON value (strings are used as-is, must be valid JSON)
-#         "generationConfig.responseJsonSchema": "{\"type\":\"object\",\"properties\":{\"answer\":{\"type\":\"string\"}}}"
 #   override: # Override rules always set parameters, overwriting any existing values.
 #     - models:
 #         - name: "gpt-*" # Supports wildcards (e.g., "gpt-*")
-#           protocol: "codex" # restricts the rule to a specific protocol, options: openai, gemini, claude, codex, antigravity
+#           protocol: "codex" # restricts the rule to a specific protocol, options: openai, gemini, claude, codex
 #       params: # JSON path (gjson/sjson syntax) -> value
 #         "reasoning.effort": "high"
-#   override-raw: # Override raw rules always set parameters using raw JSON (must be valid JSON).
-#     - models:
-#         - name: "gpt-*" # Supports wildcards (e.g., "gpt-*")
-#           protocol: "codex" # restricts the rule to a specific protocol, options: openai, gemini, claude, codex, antigravity
-#       params: # JSON path (gjson/sjson syntax) -> raw JSON value (strings are used as-is, must be valid JSON)
-#         "response_format": "{\"type\":\"json_schema\",\"json_schema\":{\"name\":\"answer\",\"schema\":{\"type\":\"object\"}}}"
-#   filter: # Filter rules remove specified parameters from the payload.
-#     - models:
-#         - name: "gemini-2.5-pro" # Supports wildcards (e.g., "gemini-*")
-#           protocol: "gemini" # restricts the rule to a specific protocol, options: openai, gemini, claude, codex, antigravity
-#       params: # JSON paths (gjson/sjson syntax) to remove from the payload
-#         - "generationConfig.thinkingConfig.thinkingBudget"
-#         - "generationConfig.responseJsonSchema"
